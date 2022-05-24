@@ -72,3 +72,34 @@ will result in
 ```
 Observe that **any** ocurrence will encrypt.
 
+#### /keypairgen
+Endpoint to obtain a secret key and its corresponding public key.
+
+```curl
+curl --location --request GET 'localhost:8080/keypairgen'
+```
+
+Response
+
+```json
+{
+    "secret_key": "94alpEfoJ34wPGl3j8XQvpVl3a0S+mge/tsr1w76cBQ=",
+    "public_key": "HQO6x27IpgnM/kExXLA62+c+rGguR5R8de7BxRum2G4="
+}
+```
+
+You can optionally pass a seed as a query param, in order to obtain the key pair deterministically.
+This seed should be base64 encoded.
+
+```curl
+curl --location --request GET 'localhost:8080/keypairgen?seed=2y3J9Te/e4BDaakrsRaQHKcVBMQ9lFfajmXNceH6Hiw='
+```
+
+Response
+
+```json
+{
+    "secret_key": "3eqLv3JxMq+3eQ90syLHtjXaZtuuwlDTzUJ0qwIyB6o=",
+    "public_key": "hbIsylPj0a/yiRrw9sipHFRATERqqdITu2CfyxYO/DU="
+}
+```
